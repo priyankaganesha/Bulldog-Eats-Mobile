@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                   color: _selectedIndex == 0 ? Colors.yellow : Colors.white,
                 ),
               ),
-              backgroundColor: Colors.blue),
+              backgroundColor: Color(0xFF9dd2dc)),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.comment,
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                   color: _selectedIndex == 1 ? Colors.yellow : Colors.white,
                 ),
               ),
-              backgroundColor: Colors.blue),
+              backgroundColor: Color(0xFF9dd2dc)),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.add_a_photo,
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                   color: _selectedIndex == 2 ? Colors.yellow : Colors.white,
                 ),
               ),
-              backgroundColor: Colors.blue),
+              backgroundColor: Color(0xFF9dd2dc)),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.security,
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                   color: _selectedIndex == 3 ? Colors.yellow : Colors.white,
                 ),
               ),
-              backgroundColor: Colors.blue),
+              backgroundColor: Color(0xFF9dd2dc)),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.settings,
@@ -104,10 +104,10 @@ class _HomePageState extends State<HomePage> {
               title: Text(
                 'Settings',
                 style: TextStyle(
-                  color: _selectedIndex == 4 ? Colors.yellow : Colors.blue,
+                  color: _selectedIndex == 4 ? Colors.yellow : Color(0xFF9dd2dc),
                 ),
               ),
-              backgroundColor: Colors.blue),
+              backgroundColor: Color(0xFF9dd2dc)),
         ],
       ),
     );

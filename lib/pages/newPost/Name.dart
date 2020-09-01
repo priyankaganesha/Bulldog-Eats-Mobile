@@ -13,6 +13,7 @@ class _NameState extends State<Name> {
     return Scaffold(
       appBar: AppBar(
         title: Text("New Post"),
+        backgroundColor: Color(0xFF9dd2dc),
       ),
       body:
       Container(

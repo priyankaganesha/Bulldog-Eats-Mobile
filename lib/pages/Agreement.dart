@@ -13,6 +13,7 @@ class _AgreementState extends State<Agreement> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Agreement"),
+        backgroundColor: Color(0xFF9dd2dc),
       ),
     );
   }

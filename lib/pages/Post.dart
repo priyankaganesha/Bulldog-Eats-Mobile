@@ -12,45 +12,64 @@ class Post extends StatefulWidget {
 }
 
 class _PostState extends State<Post> {
-  /*PageController _pageController = PageController();
-
-  Widget screen = Name();
-
-  int _selectedIndex = 1;
-
-  void _onPageChanged(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  void _onItemTapped(int selectedIndex) {
-    _pageController.jumpToPage(selectedIndex);
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Post"),
+        backgroundColor: Color(0xFF9dd2dc),
       ),
-        body: ButtonTheme(
+        body: MyButtons(),
+
+
+      /*ButtonTheme(
           minWidth: 170.0,
           height: 50.0,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          child: RaisedButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute<Null>(builder:  (BuildContext context) {
-                return new Name();
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),*/
+              /*child: RaisedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute<Null>(builder:  (BuildContext context) {
+                    return new Name();
                   }
-                )
-              );
-            },
+                  )
+                  );
+                  },
+                color: Color(0xffe9903d),
+                child: Text("Button", style: TextStyle(color: Colors.black),
+                ),
+              )*/
+
+        //)
+        //)
+    );
+  }
+}
+
+class MyButtons extends StatelessWidget{
+  MyButtons({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          RaisedButton(
+            onPressed: (){},
+            child: Text('Make Post', style: TextStyle(fontSize: 20)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             color: Color(0xffe9903d),
-            child: Text("Button", style: TextStyle(color: Colors.black),
           ),
-        )
-      )
+          const SizedBox(height: 30),
+          RaisedButton(
+            onPressed: () {},
+            child: const Text('Edit Post', style: TextStyle(fontSize: 20)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+            color: Color(0xffe9903d),
+          ),
+          const SizedBox(height: 30),
+        ],
+      ),
     );
   }
 }
