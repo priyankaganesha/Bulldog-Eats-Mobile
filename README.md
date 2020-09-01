@@ -1,3 +1,3 @@
 # Bulldog Eats
 
-Flutter application to connect hungry college students with excess food at campus events.
+An ongoing student led project that intends to reduce food waste by notifying users of free excess food on the Bellevue College campus.
