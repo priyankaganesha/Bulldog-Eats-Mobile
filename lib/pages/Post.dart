@@ -16,7 +16,10 @@ class _PostState extends State<Post> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Post"),
+        title: Padding(
+          padding: const EdgeInsets.all(100),
+          child: Text("Post Options", style: TextStyle(fontSize: 30)),
+        ),
         backgroundColor: Color(0xFF9dd2dc),
       ),
         body: MyButtons(),
@@ -48,6 +51,8 @@ class _PostState extends State<Post> {
 class MyButtons extends StatelessWidget{
   MyButtons({Key key}) : super(key: key);
 
+  //final DBRef = FirebaseDatabase.instance.reference();
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -55,14 +60,23 @@ class MyButtons extends StatelessWidget{
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           RaisedButton(
-            onPressed: (){},
+            onPressed: (){
+              Navigator.of(context).push(MaterialPageRoute<Null>(builder: (BuildContext) {
+                return new Name();
+              }
+              )
+              );
+            },
             child: Text('Make Post', style: TextStyle(fontSize: 20)),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             color: Color(0xffe9903d),
           ),
           const SizedBox(height: 30),
           RaisedButton(
-            onPressed: () {},
+            onPressed: () {
+              //writeData();
+
+            },
             child: const Text('Edit Post', style: TextStyle(fontSize: 20)),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             color: Color(0xffe9903d),
@@ -72,4 +86,16 @@ class MyButtons extends StatelessWidget{
       ),
     );
   }
+
+  /*void writeData(){
+    DBRef.child("posts").push().set({
+        'description': "sour",
+        "id" : "1",
+        "image" : "none",
+        "location" : "bellevue college",
+        "title" : "lime",
+        "uid" : "idk",
+        "until" : "forever"
+    });
+  }*/
 }
