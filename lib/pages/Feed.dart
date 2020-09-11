@@ -13,7 +13,7 @@ class _FeedState extends State<Feed> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Feed"),
-        backgroundColor: Color(0xFF9dd2dc),
+        backgroundColor: Colors.cyan[200],
       ),
     );
   }

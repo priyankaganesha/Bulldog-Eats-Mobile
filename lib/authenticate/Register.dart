@@ -1,3 +1,4 @@
+import 'package:bulldog_eats/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:bulldog_eats/services/Auth.dart';
 
@@ -19,11 +20,11 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.cyanAccent[700],
         appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.cyanAccent[700],
           elevation: 0.0,
-          title: Text('Sign up for Bulldog Eats'),
+          title: Text('Sign-up for Bulldog Eats'),
           actions: <Widget>[
             //Button in corner that allows you to sign in
             FlatButton.icon(
@@ -35,20 +36,27 @@ class _RegisterState extends State<Register> {
           ],
         ),
         body: Container(
-          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
           child: Form(
             key: _formkey,
             child: Column(
               children: <Widget>[
                 SizedBox(height: 20.0),
+                //email textbox
                 TextFormField(
+                    //created a constant for the textbox and defined the text inside individually
+                    decoration: textInputDecoration.copyWith(
+                        hintText: 'Enter an Email'),
                     validator: (value) =>
                         value.isEmpty ? 'Enter an email' : null,
                     onChanged: (value) {
                       setState(() => email = value);
                     }), // TextFormField
                 SizedBox(height: 20.0),
+                // password textbox
                 TextFormField(
+                    decoration: textInputDecoration.copyWith(
+                        hintText: 'Create a Password'),
                     obscureText: true,
                     validator: (value) => value.length < 6
                         ? 'Enter a password 6+ characters long'
@@ -68,7 +76,7 @@ class _RegisterState extends State<Register> {
                         dynamic result = await _auth
                             .registerWithEmailAndPassword(email, password);
                         if (result == null) {
-                          setState(() => error = 'please input a valid email');
+                          setState(() => error = 'Please input a valid email.');
                         }
                       }
                     }),

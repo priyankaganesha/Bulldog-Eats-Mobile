@@ -17,16 +17,15 @@ class _PostState extends State<Post> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Post"),
-        backgroundColor: Color(0xFF9dd2dc),
+        backgroundColor: Colors.cyan[200],
       ),
-        body: MyButtons(),
-
+      body: MyButtons(),
 
       /*ButtonTheme(
           minWidth: 170.0,
           height: 50.0,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),*/
-              /*child: RaisedButton(
+      /*child: RaisedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute<Null>(builder:  (BuildContext context) {
                     return new Name();
@@ -39,13 +38,13 @@ class _PostState extends State<Post> {
                 ),
               )*/
 
-        //)
-        //)
+      //)
+      //)
     );
   }
 }
 
-class MyButtons extends StatelessWidget{
+class MyButtons extends StatelessWidget {
   MyButtons({Key key}) : super(key: key);
 
   @override
@@ -55,16 +54,18 @@ class MyButtons extends StatelessWidget{
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           RaisedButton(
-            onPressed: (){},
+            onPressed: () {},
             child: Text('Make Post', style: TextStyle(fontSize: 20)),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             color: Color(0xffe9903d),
           ),
           const SizedBox(height: 30),
           RaisedButton(
             onPressed: () {},
             child: const Text('Edit Post', style: TextStyle(fontSize: 20)),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             color: Color(0xffe9903d),
           ),
           const SizedBox(height: 30),

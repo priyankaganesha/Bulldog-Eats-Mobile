@@ -15,7 +15,7 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Settings"),
-        backgroundColor: Color(0xFF9dd2dc),
+        backgroundColor: Colors.cyan[200],
         elevation: 0.0, // The Sign Out Button
         actions: <Widget>[
           FlatButton.icon(

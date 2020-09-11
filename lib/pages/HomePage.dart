@@ -42,42 +42,42 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onItemTapped,
-        backgroundColor: Color(0xFF9dd2dc),
+        backgroundColor: Colors.cyan[200],
         //Switching pages
         items: [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.comment,
-              color: _selectedIndex == 0 ? Colors.orange : Colors.white,
+              color: _selectedIndex == 0 ? Colors.blue[900] : Colors.white,
             ),
             title: Text(
               'Feed',
               style: TextStyle(
-                color: _selectedIndex == 0 ? Colors.orange : Colors.white,
+                color: _selectedIndex == 0 ? Colors.blue[900] : Colors.white,
               ),
             ),
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.add_a_photo,
-              color: _selectedIndex == 1 ? Colors.orange : Colors.white,
+              color: _selectedIndex == 1 ? Colors.blue[900] : Colors.white,
             ),
             title: Text(
               'Post',
               style: TextStyle(
-                color: _selectedIndex == 1 ? Colors.orange : Colors.white,
+                color: _selectedIndex == 1 ? Colors.blue[900] : Colors.white,
               ),
             ),
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.settings,
-              color: _selectedIndex == 2 ? Colors.orange : Colors.white,
+              color: _selectedIndex == 2 ? Colors.blue[900] : Colors.white,
             ),
             title: Text(
               'Settings',
               style: TextStyle(
-                color: _selectedIndex == 2 ? Colors.orange : Colors.white,
+                color: _selectedIndex == 2 ? Colors.blue[900] : Colors.white,
               ),
             ),
           ),
