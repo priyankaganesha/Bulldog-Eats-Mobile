@@ -42,44 +42,45 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onItemTapped,
+        backgroundColor: Color(0xFF9dd2dc),
         //Switching pages
         items: [
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.comment,
-                color: _selectedIndex == 0 ? Colors.orange : Colors.grey,
+            icon: Icon(
+              Icons.comment,
+              color: _selectedIndex == 0 ? Colors.orange : Colors.white,
+            ),
+            title: Text(
+              'Feed',
+              style: TextStyle(
+                color: _selectedIndex == 0 ? Colors.orange : Colors.white,
               ),
-              title: Text(
-                'Feed',
-                style: TextStyle(
-                  color: _selectedIndex == 0 ? Colors.orange : Colors.grey,
-                ),
-              ),
-              backgroundColor: Color(0xFF9dd2dc)),
+            ),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.add_a_photo,
-                color: _selectedIndex == 1 ? Colors.orange : Colors.grey,
+            icon: Icon(
+              Icons.add_a_photo,
+              color: _selectedIndex == 1 ? Colors.orange : Colors.white,
+            ),
+            title: Text(
+              'Post',
+              style: TextStyle(
+                color: _selectedIndex == 1 ? Colors.orange : Colors.white,
               ),
-              title: Text(
-                'Post',
-                style: TextStyle(
-                  color: _selectedIndex == 1 ? Colors.orange : Colors.grey,
-                ),
-              ),
-              backgroundColor: Color(0xFF9dd2dc)),
+            ),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.settings,
-                color: _selectedIndex == 2 ? Colors.orange : Colors.grey,
+            icon: Icon(
+              Icons.settings,
+              color: _selectedIndex == 2 ? Colors.orange : Colors.white,
+            ),
+            title: Text(
+              'Settings',
+              style: TextStyle(
+                color: _selectedIndex == 2 ? Colors.orange : Colors.white,
               ),
-              title: Text(
-                'Settings',
-                style: TextStyle(
-                  color: _selectedIndex == 2 ? Colors.orange : Colors.grey,
-                ),
-              ),
-              backgroundColor: Color(0xFF9dd2dc)),
+            ),
+          ),
         ],
       ),
     );
