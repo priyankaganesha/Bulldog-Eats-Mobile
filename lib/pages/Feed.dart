@@ -12,8 +12,14 @@ class _FeedState extends State<Feed> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Feed"),
+        title: Center(
+          child: Text(
+            "Feed",
+            style: TextStyle(fontSize: 30),
+          ),
+        ),
         backgroundColor: Colors.cyan[200],
+        elevation: 0.0,
       ),
     );
   }

@@ -16,8 +16,14 @@ class _PostState extends State<Post> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Post"),
+        title: Center(
+          child: Text(
+            "Post",
+            style: TextStyle(fontSize: 30),
+          ),
+        ),
         backgroundColor: Colors.cyan[200],
+        elevation: 0.0,
       ),
       body: MyButtons(),
 

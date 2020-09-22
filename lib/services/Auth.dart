@@ -48,7 +48,9 @@ class AuthService {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
+
       User user = result.user;
+      user.sendEmailVerification();
       return _fromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -60,6 +62,16 @@ class AuthService {
   Future signOut() async {
     try {
       return await _auth.signOut();
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  //Reset password
+  Future sendPasswordResetEmail(String email) async {
+    try {
+      return _auth.sendPasswordResetEmail(email: email);
     } catch (e) {
       print(e.toString());
       return null;

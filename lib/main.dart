@@ -1,3 +1,4 @@
+import 'package:bulldog_eats/authenticate/Welcome.dart';
 import 'package:bulldog_eats/authenticate/models/User.dart';
 import 'package:bulldog_eats/services/Auth.dart';
 import 'package:flutter/material.dart';
