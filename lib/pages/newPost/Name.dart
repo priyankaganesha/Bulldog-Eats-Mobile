@@ -5,122 +5,200 @@ import 'package:bulldog_eats/pages/newPost/Description.dart';
 import 'package:bulldog_eats/pages/Post.dart';
 import 'package:firebase_database/firebase_database.dart';
 
-class Name extends StatefulWidget {
-  Name({Key key}) : super(key: key);
+class Name extends StatelessWidget {
 
   @override
-  _NameState createState() => _NameState();
+  Widget build(BuildContext context){
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "something",
+      theme: ThemeData(
+        primaryColor: Color(0xFF9dd2dc),
+      ),
+      home: GetInfo(title: 'Make a Post'),
+    );
+  }
 }
 
-class _NameState extends State<Name> {
+class GetInfo extends StatefulWidget {
+  GetInfo({Key key, this.title}) : super(key : key);
+  final String title;
+
+
+  @override
+  _GetInfoState createState() => _GetInfoState();
+}
+
+class _GetInfoState extends State<GetInfo>{
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.all(70),
-          child: Text("New Post", style: TextStyle(fontSize: 30)),
-        ),
-        backgroundColor: Color(0xFF9dd2dc),
-      ),
-      body: MyTexts(),
-    );
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("Make a Post (1/3)",
+                style: TextStyle(
+                  fontWeight: FontWeight.w200,
+                  fontSize: 30,
+                  fontFamily: 'Roboto',
+                  fontStyle: FontStyle.italic)),
+              MakePost1(),
+                ]),
+              )
+          ),
+        );
   }
 }
 
-class MyTexts extends StatefulWidget{
+class MakePost1 extends StatefulWidget {
+  MakePost1({Key key}) : super(key : key);
 
-   @override
-  _MyTextsState createState() => _MyTextsState();
+  @override
+  _MakePost1State createState() => _MakePost1State();
 }
 
+class _MakePost1State extends State<MakePost1> {
 
-class _MyTextsState extends State<MyTexts>{
-
+  String name;
+  String location;
+  String time;
+  final _formKey = GlobalKey<FormState>();
   final NameController = TextEditingController();
   final TimeController = TextEditingController();
   final LocationController = TextEditingController();
-  final DescriptionController = TextEditingController();
-  final DBRef = FirebaseDatabase.instance.reference();
+  final DBRef = FirebaseDatabase.instance.reference().child("posts");
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    NameController.dispose();
-    TimeController.dispose();
-    LocationController.dispose();
-    DescriptionController.dispose();
-    super.dispose();
-  }
+  _MakePost1State({this.name, this.location, this.time});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: Center(
-            child: Column(
-                mainAxisSize: MainAxisSize.min,
+    return Form(
+      key: _formKey,
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(20.0),
+              child: TextFormField(
+                controller: NameController,
+                decoration: InputDecoration(
+                  labelText: "Event Name",
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+                validator: (value){
+                  if (value.isEmpty){
+                    return 'Enter an Event Name';
+                  }
+                  return null;
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(20.0),
+              child: TextFormField(
+                controller: TimeController,
+                decoration: InputDecoration(
+                  labelText: "Until",
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+                validator: (value){
+                  if (value.isEmpty){
+                    return 'Enter a Time';
+                  }
+                  return null;
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(20.0),
+              child: TextFormField(
+                controller: LocationController,
+                decoration: InputDecoration(
+                  labelText: "Event Location",
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+                validator: (value){
+                  if (value.isEmpty){
+                    return 'Enter an Event Location';
+                  }
+                  return null;
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  const SizedBox(height: 100),
-                  Text(
-                      "Name of Event"
-                  ),
-                  TextField(
-                    controller: NameController,
-                  ),
-                  const SizedBox(height: 30),
-                  Text(
-                      "Available Until"
-                  ),
-                  TextField(
-                    controller: TimeController,
-                  ),
-                  const SizedBox(height: 30),
-                  Text(
-                      "Location"
-                  ),
-                  TextField(
-                    controller: LocationController,
-                  ),
-                  const SizedBox(height: 30),
-                  Text(
-                      "Description of Event"
-                  ),
-                  TextField(
-                    controller: DescriptionController,
-                  ),
-                  const SizedBox(height: 60),
                   RaisedButton(
-                    onPressed: () {
-                      writeData();
+                    color: Color(0xFF9dd2dc),
+                    onPressed: (){
+                      this.name = NameController.text;
+                      this.location = LocationController.text;
+                      this.time = TimeController.text;
+                      if (NameController.text != "" || LocationController.text != "" || TimeController.text != ""){
+                        nextPage();
+                      }
                     },
-                    child: const Text('Create Post', style: TextStyle(fontSize: 20)),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                    color: Color(0xffe9903d),
+                    child: Text('Next'),
+                  ),
+                  RaisedButton(
+                    color: Color(0xFF9dd2dc),
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Post()),
+                      );
+                    },
+                    child: Text("Cancel"),
                   )
-                ]
+                ],
+              ),
             )
+          ],
         )
+      ),
     );
   }
 
-  void writeData(){
-    DBRef.child("posts").push().set({
-      'description': "${DescriptionController.text}",
-      "image" : "none",
-      "location" : "${LocationController.text}",
-      "title" : "${NameController.text}",
-      "uid" : "TBD",
-      "until" : "${TimeController.text}"
-    });
-    Navigator.of(context).push(MaterialPageRoute<Null>(builder: (BuildContext) {
-      return new Post();
-    }
-    )
+  void nextPage(){
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Description(name : this.name, location: this.location, time: this.time,)),
     );
+  }
+
+  /*void writeData(){
+    if(_formKey.currentState.validate()){
+      DBRef.push().set({
+        "location" : LocationController.text,
+        "title" : NameController.text,
+        "until" : TimeController.text
+      }).then((_) {
+        NameController.clear();
+        LocationController.clear();
+        TimeController.clear();
+      }).catchError((onError){
+        Scaffold.of(context)
+            .showSnackBar(SnackBar(content: Text(onError)));
+      });
+    }
+  }*/
+
+  @override
+  void dispose() {
+    super.dispose();
+    NameController.dispose();
+    TimeController.dispose();
+    LocationController.dispose();
   }
 }

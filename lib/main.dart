@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'BC Eats',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        //primarySwatch: Colors.white,
         //visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(),

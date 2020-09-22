@@ -3,26 +3,29 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/rendering.dart';
-import 'package:bulldog_eats/pages/newPost/Confirmation.dart';
 import 'package:bulldog_eats/pages/Post.dart';
 
-class Description extends StatefulWidget {
-  Description({Key key, this.name, this.location, this.time}) : super(key: key);
+class DescriptionEdit extends StatefulWidget {
+  DescriptionEdit({Key key, this.id, this.name, this.location, this.time, this.description}) : super(key: key);
+  final String id;
   final String name;
   final String location;
   final String time;
+  final String description;
 
   @override
-  _MainOne createState() => new _MainOne(name: this.name, location: this.location, time: this.time);
+  _MainOne createState() => new _MainOne(id: this.id, name: this.name, location: this.location, time: this.time, description: this.description);
 }
 
-class _MainOne extends State<Description> {
+class _MainOne extends State<DescriptionEdit> {
 
+  final String id;
   final String name;
   final String location;
   final String time;
+  final String description;
 
-  _MainOne({this.name, this.location, this.time});
+  _MainOne({this.id, this.name, this.location, this.time, this.description});
 
 
   @override
@@ -43,7 +46,7 @@ class _MainOne extends State<Description> {
                   SizedBox(
                     height: 30,
                   ),
-                  MakePost2(name: this.name, location: this.location, time: this.time),
+                  MakePost2(id: this.id, name: this.name, location: this.location, time: this.time, description: this.description,),
                 ]),
           )
       ),
@@ -52,25 +55,34 @@ class _MainOne extends State<Description> {
 }
 
 class MakePost2 extends StatefulWidget {
-  MakePost2({Key key, this.name, this.location, this.time}) : super(key: key);
+  MakePost2({Key key, this.id, this.name, this.location, this.time, this.description}) : super(key: key);
+  final String id;
   final String name;
   final String location;
   final String time;
+  final String description;
 
   @override
-  _MakePost2State createState() => _MakePost2State(name: this.name, location: this.location, time: this.time);
+  _MakePost2State createState() => _MakePost2State(id: this.id, name: this.name, location: this.location, time: this.time, description: this.description);
 }
 
 class _MakePost2State extends State<MakePost2>{
 
+  final String id;
   final String name;
   final String location;
   final String time;
+  final String description;
   final _formKey = GlobalKey<FormState>();
   final DescriptionController = TextEditingController();
   final DBRef = FirebaseDatabase.instance.reference().child("posts");
 
-  _MakePost2State({this.name, this.location, this.time});
+  _MakePost2State({this.id, this.name, this.location, this.time, this.description});
+
+  void initState() {
+    DescriptionController.text = this.description;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,12 +120,12 @@ class _MakePost2State extends State<MakePost2>{
                   RaisedButton(
                     color: Color(0xFF9dd2dc),
                     onPressed: (){
-                      writeData();
+                      EditData();
                       if (DescriptionController.text != ""){
                         nextPage();
                       }
                     },
-                    child: Text('Submit'),
+                    child: Text('Submit Changes'),
                   ),
                   RaisedButton(
                     color: Color(0xFF9dd2dc),
@@ -134,10 +146,10 @@ class _MakePost2State extends State<MakePost2>{
     );
   }
 
-  void writeData(){
+  void EditData(){
 
     if(_formKey.currentState.validate()){
-      DBRef.push().set({
+      DBRef.child(id).update({
         "location" : this.location,
         "title" : this.name,
         "until" : this.time,
@@ -158,7 +170,7 @@ class _MakePost2State extends State<MakePost2>{
   void nextPage(){
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Confirmation()),
+      MaterialPageRoute(builder: (context) => Post()),
     );
   }
 }
