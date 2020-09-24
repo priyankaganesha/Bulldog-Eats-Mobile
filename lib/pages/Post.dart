@@ -29,12 +29,11 @@ class _PostState extends State<Post> {
         body: MyButtons(),
       backgroundColor: Colors.white,
 
-
       /*ButtonTheme(
           minWidth: 170.0,
           height: 50.0,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),*/
-              /*child: RaisedButton(
+      /*child: RaisedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute<Null>(builder:  (BuildContext context) {
                     return new Name();
@@ -47,13 +46,13 @@ class _PostState extends State<Post> {
                 ),
               )*/
 
-        //)
-        //)
+      //)
+      //)
     );
   }
 }
 
-class MyButtons extends StatelessWidget{
+class MyButtons extends StatelessWidget {
   MyButtons({Key key}) : super(key: key);
 
   //final DBRef = FirebaseDatabase.instance.reference();
