@@ -6,6 +6,7 @@ import 'package:bulldog_eats/authenticate/Wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
+
 void main() async {
   //initializes the firebase app
   WidgetsFlutterBinding.ensureInitialized();
